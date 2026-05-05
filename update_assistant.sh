@@ -7,7 +7,7 @@ cd update_assistant
 chmod +x update_assistant.sh
 rm ~/update_assistant.sh
 cp update_assistant.sh ~/
-rm -r update_assistant
+rm -rf update_assistant
 echo "Your system is up to date"
 exit 0
 fi
