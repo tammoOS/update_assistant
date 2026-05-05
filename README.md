@@ -1,4 +1,4 @@
-# update_assistant
+# Update Assistant for tammoOS
 
 This tool allows you to update tammoOS to the latest version
 
