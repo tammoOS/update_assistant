@@ -25,8 +25,9 @@ echo -e "\033[41mPlease reboot tammoOS after that!!\033[0m"
 fi
 
 xfconf-query -c xfce4-panel -p /panels/panel-2 -r -R
+xfconf-query -c xfce4-panel -p /panels -a -s 1
 xfconf-query -c xfce4-panel -p /panels/panel-1/position -s "p=8;x=0;y=0"
-
+xfce4-panel --restart
 hostnamectl set-hostname "tammoOS2.3"
  
   
