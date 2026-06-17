@@ -31,7 +31,7 @@ killall xfce4-panel && xfce4-panel &
 xfconf-query -c xfce4-panel -p /panels/panel-1/position -s "p=8;x=0;y=0"
 xfce4-panel --quit && xfce4-panel &
 xfconf-query --channel=xfwm4 --property=/general/inactive_opacity --set=100
-xfconf-query -c xfce4-panel -p /panels/panel-1/alpha-leave -s 100
+xfconf-query -c xfce4-panel -p /panels/panel-1/leave-opacity -n -t int -s 100
 
 hostnamectl set-hostname "tammoOS2.3"
  
