@@ -32,23 +32,6 @@ xfconf-query -c xfce4-panel -p /panels/panel-1/position -s "p=8;x=0;y=0"
 xfce4-panel --quit && xfce4-panel &
 xfconf-query --channel=xfwm4 --property=/general/inactive_opacity --set=100
 xfconf-query -c xfce4-panel -p /panels/panel-1/leave-opacity -n -t int -s 100
-xfce4-panel --add=launcher
-NEW_ID=$(xfconf-query -c xfce4-panel -p /panels/panel-1/plugin-ids | tail
-xfconf-query -c xfce4-panel -p /plugins/plugin-$NEW_ID/items -n -t string 
-CURRENT_IDS=$(xfconf-query -c xfce4-panel -p /panels/panel-
-CLEANED_IDS=$(echo "$CURRENT_IDS" | grep -v -x "$NEW_ID")
-FIRST_ID=$(echo "$CLEANED_IDS" | head -n 1)
-REST_IDS=$(echo "$CLEANED_IDS" | tail -n +2)
-ARGS=(-c xfce4-panel -p /panels/panel-1/plugin-ids)
-ARGS+=(-t int -s "$FIRST_ID")
-ARGS+=(-t int -s "$NEW_ID")
-while read -r id; do
-    if [ ! -z "$id" ]; then
-        ARGS+=(-t int -s "$id")
-    fi
-done <<< "$REST_IDS"
-xfconf-query "${ARGS[@]}"
-xfce4-panel --restart
 
 
 hostnamectl set-hostname "tammoOS2.3"
