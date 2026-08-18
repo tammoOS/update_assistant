@@ -16,7 +16,6 @@ echo "Please enter your root passwort to start"
 if [[ "$HOSTNAME" == "tammoOS" ]]; then
 sudo apt install flatpak
 sudo apt install gnome-software-plugin-flatpak
-sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub io.github.kolunmi.Bazaar
 notify-send "Hint" "tammoOS got a new software store"
 
