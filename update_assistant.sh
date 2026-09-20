@@ -1,7 +1,7 @@
 read -p "Do you want to update tammoOS to the latest version?(y/n) " Y
 case $Y in
 y)
-if [[ "$HOSTNAME" == "tammoOS2.4" ]]; then
+if [[ "$HOSTNAME" = "tammoOS2.4" ]]; then
 git clone https://github.com/tammoOS/update_assistant/
 cd update_assistant
 chmod +x update_assistant.sh
