@@ -1,7 +1,7 @@
 read -p "Do you want to update tammoOS to the latest version?(y/n) " Y
 case $Y in
 y)
-if [[ "$HOSTNAME" == "tammoOS2.3" ]]; then
+if [[ "$HOSTNAME" == "tammoOS2.4" ]]; then
 git clone https://github.com/tammoOS/update_assistant/
 cd update_assistant
 chmod +x update_assistant.sh
@@ -19,9 +19,7 @@ sudo apt install gnome-software-plugin-flatpak
 flatpak install flathub io.github.kolunmi.Bazaar
 notify-send "Hint" "tammoOS got a new software store"
 
-echo -e "\033[41mtammoOS got a new Software Store. To add the new store to the dock you need to right click on the store icon in the dock and click on properties. Then remove the old store and add the new store bazaar with +.\033[0m"
-echo -e "\033[41mPlease reboot tammoOS after that!!\033[0m"
-fi
+echo -e "\033[41mtammoOS got a new Software Store.\033[0m"
 
 xfconf-query -c xfce4-panel -p /panels/panel-2 -R -r
 xfconf-query -c xfce4-panel -p /panels -t int -s 1 -a
@@ -32,8 +30,20 @@ xfce4-panel --quit && xfce4-panel &
 xfconf-query --channel=xfwm4 --property=/general/inactive_opacity --set=100
 xfconf-query -c xfce4-panel -p /panels/panel-1/leave-opacity -n -t int -s 100
 
+fi
 
-hostnamectl set-hostname "tammoOS2.3"
+echo -e "\033[41mUpdate the System and clean up.\033[0m"
+sudo apt update
+sudo apt upgrade
+sudo apt clean
+sudo apt autoremove --purge
+sudo apt autoclean
+
+xfconf-query -c xfwm4 -p /general/wrap_windows -s false
+xfconf-query -c xfwm4 -p /general/title_on_move -s true
+
+
+hostnamectl set-hostname "tammoOS2.4"
  
   
 
