@@ -1,7 +1,8 @@
+#!/bin/bash
 read -p "Do you want to update tammoOS to the latest version?(y/n) " Y
 case $Y in
 y)
-if [ "$HOSTNAME" == "tammoOS2.4" ]; then
+if [ "$HOSTNAME" = "tammoOS2.4" ]; then
 git clone https://github.com/tammoOS/update_assistant/
 cd update_assistant
 chmod +x update_assistant.sh
@@ -13,7 +14,7 @@ exit 0
 fi
 
 echo "Please enter your root passwort to start"
-if [ "$HOSTNAME" == "tammoOS" ]; then
+if [ "$HOSTNAME" = "tammoOS" ]; then
 sudo apt install flatpak
 sudo apt install gnome-software-plugin-flatpak
 flatpak install flathub io.github.kolunmi.Bazaar
