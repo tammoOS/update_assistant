@@ -39,8 +39,8 @@ sudo apt clean
 sudo apt autoremove --purge
 sudo apt autoclean
 
-xfconf-query -c xfwm4 -p /general/wrap_windows -s false
-xfconf-query -c xfwm4 -p /general/title_on_move -s true
+xfconf-query -c xfwm4 -p /general/wrap_windows -n -t bool -s false
+xfconf-query -c xfwm4 -p /general/tile_on_move -n -t bool -s true
 
 
 hostnamectl set-hostname "tammoOS2.4"
