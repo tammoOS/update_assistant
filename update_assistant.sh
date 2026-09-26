@@ -2,7 +2,7 @@
 read -p "Do you want to update tammoOS to the latest version?(y/n) " Y
 case $Y in
 y)
-if [ "$HOSTNAME" = "tammoOS2.4" ]; then
+if [ "$HOSTNAME" = "tammoOS2.5" ]; then
 git clone https://github.com/tammoOS/update_assistant/
 cd update_assistant
 chmod +x update_assistant.sh
@@ -12,7 +12,22 @@ rm -rf ~/update_assistant
 echo "Your system is up to date"
 exit 0
 fi
-
+if [ -f "$HOME/.config/autostart/autoupdate.desktop" ]; then
+read -p "Do you want to check for Updates on startup?(y/n)"
+case $Y in
+y)
+cat <<EOF > "$HOME/.config/autostart/autoupdate.desktop"
+[Desktop Entry]
+Type=Application
+Name=autoupdate
+Comment=Update_Script
+Exec=~/update_assistant.sh
+Terminal=true
+X-GNOME-Autostart-enabled=true
+EOF
+sudo chmod +x "autoupdate.desktop"
+fi
+fi
 echo "Please enter your root passwort to start"
 if [ "$HOSTNAME" = "tammoOS" ]; then
 sudo apt install flatpak
@@ -39,12 +54,14 @@ sudo apt upgrade
 sudo apt clean
 sudo apt autoremove --purge
 sudo apt autoclean
+sudo apt --fix-broken install
+sudo ubuntu-drivers autoinstall
 
 xfconf-query -c xfwm4 -p /general/wrap_windows -n -t bool -s false
 xfconf-query -c xfwm4 -p /general/snap_to_border -n -t bool -s true
+xfconf-query -c xfce4-panel -p /plugins/plugin-17/show-labels -s false
 
-
-hostnamectl set-hostname "tammoOS2.4"
+hostnamectl set-hostname "tammoOS2.5"
  
   
 
