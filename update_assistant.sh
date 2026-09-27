@@ -15,7 +15,7 @@ exit 0
 fi
 esac
 if [ ! -f "$HOME/.config/autostart/autoupdate.desktop" ]; then
-read -p "Do you want to check for Updates on startup?" Y
+read -p "Do you want to check for Updates on startup?(y/n)" Y
 case $Y in
 y)
 cat > "$HOME/.config/autostart/autoupdate.desktop" <<EOF
@@ -30,7 +30,15 @@ EOF
 sudo chmod +x autoupdate.desktop
 esac
 fi
-echo "Please enter your root passwort to start"
+read -p "Is this version of tammoOS correct?(y/n): $HOSTNAME" Y
+case $Y in
+n)
+read -p "With Version is right (2.1.1 or newer)" Version
+case $Version in
+2.1.1)
+echo "Please enter your root passwort first"
+hostnamectl set-hostname "tammoOS"
+esac
 if [ "$HOSTNAME" = "tammoOS" ]; then
 sudo apt install flatpak
 sudo apt install gnome-software-plugin-flatpak
@@ -56,7 +64,6 @@ sudo apt clean
 sudo apt autoremove --purge
 sudo apt autoclean
 sudo apt --fix-broken install
-sudo ubuntu-drivers autoinstall
 
 xfconf-query -c xfwm4 -p /general/wrap_windows -n -t bool -s false
 xfconf-query -c xfwm4 -p /general/snap_to_border -n -t bool -s true
