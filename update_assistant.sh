@@ -1,11 +1,12 @@
 #!/bin/bash
+v="2.5" 
 echo "YOU NEED AN INTERNET CONNECTION!"
-read -p "Do you want to update tammoOS to the latest version?(y/n) " Y
+read -p "Do you want to check for Updates?(y/n) " Y
 case $Y in
 n)
 exit 0
 esac
-if [ "$HOSTNAME" = "tammoOS2.5" ]; then
+if [ "$HOSTNAME" = "tammoOS$v" ]; then
 git clone https://github.com/tammoOS/update_assistant/
 cd update_assistant
 chmod +x update_assistant.sh
@@ -46,6 +47,7 @@ exit 0
 esac
 esac
 if [ "$HOSTNAME" = "tammoOS" ]; then
+notify-send "Update Assistant" "New Update found!"
 sudo apt install flatpak
 sudo apt install gnome-software-plugin-flatpak
 flatpak install flathub io.github.kolunmi.Bazaar
@@ -75,8 +77,9 @@ xfconf-query -c xfwm4 -p /general/wrap_windows -n -t bool -s false
 xfconf-query -c xfwm4 -p /general/snap_to_border -n -t bool -s true
 xfconf-query -c xfce4-panel -p /plugins/plugin-17/show-labels -s false
 
-hostnamectl set-hostname "tammoOS2.5"
- 
+hostnamectl set-hostname "tammoOS$v"
+notify-send "Update Assistant" "Latest Version of tammoOS installed!"
+echo"Current Version: $v" 
 
 read -p "reboot(y/n)" Y
 case $Y in
