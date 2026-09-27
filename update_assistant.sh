@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "YOU NEED AN INTERNET CONNECTION!"
 read -p "Do you want to update tammoOS to the latest version?(y/n) " Y
 case $Y in
 y)
@@ -6,27 +7,28 @@ if [ "$HOSTNAME" = "tammoOS2.5" ]; then
 git clone https://github.com/tammoOS/update_assistant/
 cd update_assistant
 chmod +x update_assistant.sh
-rm ~/update_assistant.sh
-cp update_assistant.sh ~/
-rm -rf ~/update_assistant
+rm $HOME/update_assistant.sh
+cp update_assistant.sh $HOME/
+rm -rf $HOME/update_assistant
 echo "Your system is up to date"
 exit 0
 fi
-if [ -f "$HOME/.config/autostart/autoupdate.desktop" ]; then
-read -p "Do you want to check for Updates on startup?(y/n)"
+esac
+if [ ! -f "$HOME/.config/autostart/autoupdate.desktop"
+read -p "Do you want to check for Updates on startup?" Y
 case $Y in
 y)
-cat <<EOF > "$HOME/.config/autostart/autoupdate.desktop"
+cat > "$HOME/.config/autostart/autoupdate.desktop" <<EOF
 [Desktop Entry]
 Type=Application
 Name=autoupdate
 Comment=Update_Script
-Exec=~/update_assistant.sh
+Exec="/$HOME/update_assistant.sh"
 Terminal=true
 X-GNOME-Autostart-enabled=true
 EOF
-sudo chmod +x "autoupdate.desktop"
-fi
+sudo chmod +x autoupdate.desktop
+esac
 fi
 echo "Please enter your root passwort to start"
 if [ "$HOSTNAME" = "tammoOS" ]; then
@@ -47,7 +49,6 @@ xfconf-query --channel=xfwm4 --property=/general/inactive_opacity --set=100
 xfconf-query -c xfce4-panel -p /panels/panel-1/leave-opacity -n -t int -s 100
 
 fi
-
 echo -e "\033[41mUpdate the System and clean up.\033[0m"
 sudo apt update
 sudo apt upgrade
@@ -63,13 +64,11 @@ xfconf-query -c xfce4-panel -p /plugins/plugin-17/show-labels -s false
 
 hostnamectl set-hostname "tammoOS2.5"
  
-  
 
-read -p "reboot?(y/n) " Y
+read -p "reboot(y/n)" Y
 case $Y in
 y)
-reboot
-esac
-
-esac
+sudo reboot
 exit 0
+;;
+esac
