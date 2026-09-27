@@ -2,7 +2,8 @@
 echo "YOU NEED AN INTERNET CONNECTION!"
 read -p "Do you want to update tammoOS to the latest version?(y/n) " Y
 case $Y in
-y)
+n)
+exit 0
 if [ "$HOSTNAME" = "tammoOS2.5" ]; then
 git clone https://github.com/tammoOS/update_assistant/
 cd update_assistant
