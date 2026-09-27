@@ -79,7 +79,7 @@ xfconf-query -c xfce4-panel -p /plugins/plugin-17/show-labels -s false
 
 hostnamectl set-hostname "tammoOS$v"
 notify-send "Update Assistant" "Latest Version of tammoOS installed!"
-echo"Current Version: $v" 
+echo "Current Version: $v" 
 
 read -p "reboot(y/n)" Y
 case $Y in
