@@ -13,6 +13,7 @@ rm -rf $HOME/update_assistant
 echo "Your system is up to date"
 exit 0
 fi
+exit 0
 esac
 if [ ! -f "$HOME/.config/autostart/autoupdate.desktop" ]; then
 read -p "Do you want to check for Updates on startup?(y/n)" Y
@@ -38,6 +39,9 @@ case $Version in
 2.1.1)
 echo "Please enter your root passwort first"
 hostnamectl set-hostname "tammoOS"
+echo "Please reboot before continue"
+exit 0
+esac
 esac
 if [ "$HOSTNAME" = "tammoOS" ]; then
 sudo apt install flatpak
