@@ -13,7 +13,6 @@ rm -rf $HOME/update_assistant
 echo "Your system is up to date"
 exit 0
 fi
-exit 0
 esac
 if [ ! -f "$HOME/.config/autostart/autoupdate.desktop" ]; then
 read -p "Do you want to check for Updates on startup?(y/n)" Y
