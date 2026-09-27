@@ -14,7 +14,7 @@ echo "Your system is up to date"
 exit 0
 fi
 esac
-if [ ! -f "$HOME/.config/autostart/autoupdate.desktop"
+if [ ! -f "$HOME/.config/autostart/autoupdate.desktop"]; then
 read -p "Do you want to check for Updates on startup?" Y
 case $Y in
 y)
