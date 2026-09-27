@@ -4,6 +4,7 @@ read -p "Do you want to update tammoOS to the latest version?(y/n) " Y
 case $Y in
 n)
 exit 0
+esac
 if [ "$HOSTNAME" = "tammoOS2.5" ]; then
 git clone https://github.com/tammoOS/update_assistant/
 cd update_assistant
@@ -15,7 +16,7 @@ echo "Your system is up to date"
 notify-send "Update Assistant" "Your system is up to date"
 exit 0
 fi
-esac
+
 if [ ! -f "$HOME/.config/autostart/autoupdate.desktop" ]; then
 read -p "Do you want to check for Updates on startup?(y/n)" Y
 case $Y in
