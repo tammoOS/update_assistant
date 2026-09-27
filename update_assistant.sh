@@ -11,6 +11,7 @@ rm $HOME/update_assistant.sh
 cp update_assistant.sh $HOME/
 rm -rf $HOME/update_assistant
 echo "Your system is up to date"
+notify-send "Update Assistant" "Your system is up to date"
 exit 0
 fi
 esac
