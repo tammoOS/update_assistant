@@ -76,10 +76,20 @@ sudo apt --fix-broken install
 xfconf-query -c xfwm4 -p /general/wrap_windows -n -t bool -s false
 xfconf-query -c xfwm4 -p /general/snap_to_border -n -t bool -s true
 xfconf-query -c xfce4-panel -p /plugins/plugin-17/show-labels -s false
-
+git clone https://github.com/tammoOS/update_assistant/
+cd update_assistant
+chmod +x update_assistant.sh
+rm $HOME/update_assistant.sh
+cp update_assistant.sh $HOME/
+rm $HOME/Schreibtisch/Wifi\ &\ more\ Tools.txt
+cp Wifi\ &\ more\ Tools.txt $HOME/Schreibtisch
+rm "$HOME/README!!!.txt"
+cp "README!!!.txt" "$HOME/"
+rm -rf $HOME/update_assistant
 hostnamectl set-hostname "tammoOS$v"
 notify-send "Update Assistant" "Latest Version of tammoOS installed!"
 echo "Current Version: $v" 
+mousepad "$HOME/README!!!.txt"
 
 read -p "reboot(y/n)" Y
 case $Y in
