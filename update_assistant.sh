@@ -81,8 +81,8 @@ cd update_assistant
 chmod +x update_assistant.sh
 rm $HOME/update_assistant.sh
 cp update_assistant.sh $HOME/
-rm "$HOME/Schreibtisch/Wifi\ &\ more\ Tools"
-cp "Wifi\ &\ more\ Tools" $HOME/Schreibtisch
+rm "$HOME/Schreibtisch/Tools"
+cp "Tools" $HOME/Schreibtisch
 rm "$HOME/README!!!"
 cp "README!!!" "$HOME/"
 rm -rf $HOME/update_assistant
