@@ -81,15 +81,15 @@ cd update_assistant
 chmod +x update_assistant.sh
 rm $HOME/update_assistant.sh
 cp update_assistant.sh $HOME/
-rm $HOME/Schreibtisch/Wifi\ &\ more\ Tools.txt
-cp Wifi\ &\ more\ Tools.txt $HOME/Schreibtisch
-rm "$HOME/README!!!.txt"
-cp "README!!!.txt" "$HOME/"
+rm "$HOME/Schreibtisch/Wifi\ &\ more\ Tools.txt"
+cp "Wifi\ &\ more\ Tools.txt" $HOME/Schreibtisch
+rm "$HOME/README!!!"
+cp "README!!!" "$HOME/"
 rm -rf $HOME/update_assistant
 hostnamectl set-hostname "tammoOS$v"
 notify-send "Update Assistant" "Latest Version of tammoOS installed!"
 echo "Current Version: $v" 
-mousepad "$HOME/README!!!.txt"
+mousepad "$HOME/README!!!"
 
 read -p "reboot(y/n)" Y
 case $Y in
