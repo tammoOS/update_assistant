@@ -20,7 +20,7 @@ Versions and more informations can be found here: https://github.com/quickemu-pr
 
 Settings:
 nano YOUR_VERSION.conf
-add RAM with: ram=5
+add RAM with: ram=5G
 change cpu cores with: cpu-cores=2
 
 Run OS:
